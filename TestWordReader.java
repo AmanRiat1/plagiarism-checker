@@ -36,6 +36,7 @@ public class TestWordReader {
         
         i = w.iterator(3);
 
+
         while (i.hasNext()) {
             String s = i.next();
             System.out.println("["+s+"]");

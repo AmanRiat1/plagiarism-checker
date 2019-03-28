@@ -19,6 +19,27 @@ public class WordReader {
     
     private String content;
 
+   	private class iterator implements Iterator<String>{
+
+   		private int size;
+   		private int position;
+
+   		public iterator(int size){
+   			this.size = size; 
+   			position = 0;
+   		}
+
+		public boolean hasNext(){
+			return (position+size-1 < content.length());
+		}
+		public String next(){
+			String s = content.substring(position,(position + size));
+			position += 1;
+			return s; 
+
+		}
+	}
+
     /**
      * When an object of the class WordReader is created, this
      * constructor reads the content the file specified by the
@@ -82,8 +103,11 @@ public class WordReader {
      */
     
     public Iterator<String> iterator(int size) {
-
-        throw new UnsupportedOperationException("not implemented yet!");
+    	if (size < 2 || size > content.length()){
+    		throw new IndexOutOfBoundsException();
+    	}
+    	iterator test = new iterator(size);
+    	return (test);
         
     }
 
