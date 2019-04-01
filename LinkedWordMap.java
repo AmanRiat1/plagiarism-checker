@@ -146,12 +146,6 @@ public class LinkedWordMap implements WordMap {
                 return;
           }
         }
-        //if alphabetical will have to change this 
-        Node newElem = new Node(key,current,head);
-        //heads current previous points to last element and we connect that last element to new Node 
-        current.next = newElem;
-        head.previous = newElem;    
-        
     }
     
     /**
