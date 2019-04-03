@@ -57,9 +57,67 @@ public class TreeWordMap implements WordMap {
      */
     
     public void update(String key) {
+        
+            if(key == null) {
+                throw new NullPointerException();
+            }
+            
 
-        throw new UnsupportedOperationException("not implemented yet!");
-
+            if(root == null) {
+                root = new Elem(key);
+                size++;
+            }
+            
+            boolean done = false;
+            
+            Elem current = root;
+            while(!done) {
+                int test = current.key.compareTo(key);
+                if(test == 0) {
+                if(key.equals(current.key) && (current.right != null || current.left != null)) {
+                    current.count++;
+                    break;
+                }
+                    done = true;
+                }
+                else if(test<0) {
+                    if(current.right == null) {
+                        current.right = new Elem(key);
+                        done = true;
+                        size++;
+                    }
+                    else {
+                        if(key.equals(current.right.key)) {
+                            current.right.count++;
+                        break;
+                    }
+                        else {
+                            current = current.right;
+                            done = false;
+                        }
+                    }
+                }
+                else {
+                    if(current.left == null) {
+                        current.left = new Elem(key);
+                        done = true;
+                        size++;
+                    }
+                    else {
+                        if(key.equals(current.left.key)) {
+                            current.left.count++;
+                        break;
+                    }
+                        else {
+                            current = current.left;
+                            done = false;
+                        }
+                    }   
+                }
+                
+            }
+            
+            
     }
     
     /**
@@ -108,7 +166,15 @@ public class TreeWordMap implements WordMap {
     
     public String[] keys() {
         
-        throw new UnsupportedOperationException("not implemented yet!");
+            Elem current = root;
+            String[] keys = new String[size()];
+            
+            
+            for(int i=0;i<size();i++) {
+                
+            }
+        return keys;
+        //throw new UnsupportedOperationException("not implemented yet!");
         
     }
     

@@ -141,15 +141,15 @@ public class TestWordMap {
 
         System.out.println("testAddOneTwo(new TreeWordMap())");
 
-        testAddOneTwo(new TreeWordMap());
+       // testAddOneTwo(new TreeWordMap());
 
         System.out.println("testAddFive(new TreeWordMap())");
 
-        testAddFive(new TreeWordMap());
+       // testAddFive(new TreeWordMap());
         
         System.out.println("testABC(new TreeWordMap())");
 
-        testABC(new TreeWordMap());
+      //  testABC(new TreeWordMap());
     }
 
 }
