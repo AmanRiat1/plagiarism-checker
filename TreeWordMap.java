@@ -23,7 +23,9 @@ public class TreeWordMap implements WordMap {
     private int size;
     
     private String[] keys;
+    private Integer[] counts;
     private int count;
+    private int count2 = 0;
 
     /**
      * Returns true if and only if this WordMap contains the specified
@@ -60,7 +62,9 @@ public class TreeWordMap implements WordMap {
      */
     
     public void update(String key) {
-        
+                
+                boolean done = false;
+
             if(key == null) {
                 throw new NullPointerException();
             }
@@ -69,15 +73,15 @@ public class TreeWordMap implements WordMap {
             if(root == null) {
                 root = new Elem(key);
                 size++;
+                done = true;
             }
             
-            boolean done = false;
             
             Elem current = root;
             while(!done) {
                 int test = current.key.compareTo(key);
                 if(test == 0) {
-                if(key.equals(current.key) && (current.right != null || current.left != null)) {
+                if(key.equals(current.key)) {
                     current.count++;
                     break;
                 }
@@ -170,28 +174,23 @@ public class TreeWordMap implements WordMap {
     public String[] keys() {
         
         Elem current = root;
- 		keys = new String[size()];
- 		inOrder(root);
-            
-            // for(int i=0;i<size();i++) {
-                
-            // }
+        keys = new String[size()];
+        inOrder(root);
         return keys;
-        //throw new UnsupportedOperationException("not implemented yet!");
         
     }
 
     private void visit(Elem current){
-    	keys[count] = current.key;
-    	count++;
+        keys[count] = current.key;
+        count++;
     }
 
     private void inOrder(Elem current){
-    	if (current != null){
-    		inOrder(current.left);
-    		visit(current);
-    		inOrder(current.right);
-    	}
+        if (current != null){
+            inOrder(current.left);
+            visit(current);
+            inOrder(current.right);
+        }
     }
     
     /**
@@ -203,9 +202,25 @@ public class TreeWordMap implements WordMap {
      */
     
     public Integer[] counts() {
-
-        throw new UnsupportedOperationException("not implemented yet!");
         
+        Elem current = root;
+            counts = new Integer[size()];
+            inOrder2(root);
+        return counts;
+        
+    }
+    
+    private void visit2(Elem current){
+            counts[count2] = current.count;
+            count2++;
+    }
+
+    private void inOrder2(Elem current){
+        if (current != null){
+            inOrder2(current.left);
+            visit2(current);
+            inOrder2(current.right);
+        }
     }
 
 }
