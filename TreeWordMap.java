@@ -21,6 +21,9 @@ public class TreeWordMap implements WordMap {
 
     private Elem root;
     private int size;
+    
+    private String[] keys;
+    private int count;
 
     /**
      * Returns true if and only if this WordMap contains the specified
@@ -166,16 +169,29 @@ public class TreeWordMap implements WordMap {
     
     public String[] keys() {
         
-            Elem current = root;
-            String[] keys = new String[size()];
+        Elem current = root;
+ 		keys = new String[size()];
+ 		inOrder(root);
             
-            
-            for(int i=0;i<size();i++) {
+            // for(int i=0;i<size();i++) {
                 
-            }
+            // }
         return keys;
         //throw new UnsupportedOperationException("not implemented yet!");
         
+    }
+
+    private void visit(Elem current){
+    	keys[count] = current.key;
+    	count++;
+    }
+
+    private void inOrder(Elem current){
+    	if (current != null){
+    		inOrder(current.left);
+    		visit(current);
+    		inOrder(current.right);
+    	}
     }
     
     /**
