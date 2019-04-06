@@ -6,32 +6,57 @@ public class Jaccard implements Similarity{
 		double intersection = 0;
 		double union = 0;
 		String[] setElems; 
-		//brute force way of union will have to change 
-		//making sure every element is cycled through 
+		// brute force way of union will have to change 
+		// making sure every element is cycled through 
 		if (bSize < aSize){
 			setElems = a.keys();
 			for (int i = 0; i < aSize; i++){
-				if (b.contains(setElems[i])){
-					intersection++;
+				if (a.get(setElems[i]) < 2){
+					if (b.contains(setElems[i])){
+						intersection++;
+					}
+					union++;
+					a.update(setElems[i]);
 				}
-				union++;
-				//b.update(setElems[i]);
+			
 			}
-			//return (intersection/(b.keys()).length);
+			// System.out.println("Intersection is " + intersection);
+			// System.out.println("Union is " + union);
 			return (intersection/union);
 		}else{
 			setElems = b.keys();
 			for (int i = 0; i < bSize; i++){
-				if (a.contains(setElems[i])){
-					intersection++;
+				if(b.get(setElems[i])< 2){
+					if (a.contains(setElems[i])){
+						intersection++;
+					}
+					union ++;
+					b.update(setElems[i]);
 				}
-				//a.update(setElems[i]);
-				union ++;
+	
 			}
-			//return(intersection/(a.keys()).length);
+			// System.out.println("Intersection is " + intersection);
+			// System.out.println("Union is " + union);
 			return (intersection/union);
 		}
+		// WordMap intersection = new LinkedWordMap();
+		// WordMap union = new LinkedWordMap();
+		// if (bSize < aSize){
+		// 	setElems = a.keys();
+		// 	for (int i = 0; i < aSize; i++){
+		// 		if(!intersection.contains(setElems[i])){
+		// 			if (b.contains(setElems[i])){
+		// 				intersection.update(setElems[i]);
+		// 				union.update(setElems[i]);
+		// 			}else{
 
+		// 			}
+		// 		}
+		
+		// 	}
+		// }else{
+
+		// }
 	}
 
 }

@@ -112,6 +112,7 @@ public class TestJaccard {
         w2.update("neuf");
         w2.update("dix");
 
+
         Utils.assertEquals(0.4, new Jaccard().score(w1,w2), 0.00001);
 
     }
@@ -152,6 +153,10 @@ public class TestJaccard {
         System.out.println("testScore04(new LinkedWordMap(), new LinkedWordMap())");
 
         testScore04(new LinkedWordMap(), new LinkedWordMap());
+
+        System.out.println("testScore04(new TreeWordMap(), new TreeWordMap())");
+
+        testScore04(new TreeWordMap(), new TreeWordMap());
         
     }
 
