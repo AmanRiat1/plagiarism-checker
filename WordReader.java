@@ -7,7 +7,8 @@
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
 import java.io.BufferedReader;
 
 import java.util.Iterator;
@@ -67,8 +68,15 @@ public class WordReader {
     
     public WordReader(String fileName, boolean caseSensitive) throws FileNotFoundException, IOException {
 
+        if (fileName == null) {
+            throw new NullPointerException();
+        }
+        
+        InputStreamReader input;
+        input =  new InputStreamReader(new FileInputStream(fileName), "UTF-8");
+
         BufferedReader reader;
-        reader = new BufferedReader(new FileReader(fileName));
+        reader = new BufferedReader(input);
 
         StringBuilder buffer;
         buffer = new StringBuilder();
